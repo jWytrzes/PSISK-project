@@ -5,14 +5,8 @@ const GlobalStyle = createGlobalStyle`
 		box-sizing: border-box;
 	}
 
-	html {
-		font-size: 62.5%; 
-	}
-
 	body {
 		font-size: 16px; 
-		font-size: 1.6rem;
-		line-height: 1.5;
 		font-family: Roboto, sans-serif;
 	}
 
