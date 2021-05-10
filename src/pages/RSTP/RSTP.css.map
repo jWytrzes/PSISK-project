@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,CAAC;EACA,SAAS,EAAE,IAAI;CAClB",
+    "sources": [
+        "RSTP.scss"
+    ],
+    "names": [],
+    "file": "RSTP.css"
+}
