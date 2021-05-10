@@ -37,6 +37,7 @@ const SpanningTree = () => {
 					Przykład drzew rozpinających w grafie (
 					<a
 						target="_blank"
+						rel="noreferrer"
 						href="https://pl.wikipedia.org/wiki/Drzewo_rozpinaj%C4%85ce"
 					>
 						źródło
@@ -54,6 +55,7 @@ const SpanningTree = () => {
 						<a
 							href="https://pl.wikipedia.org/wiki/Drzewo_rozpinaj%C4%85ce"
 							target="_blank"
+							rel="noreferrer"
 						>
 							https://pl.wikipedia.org/wiki/Drzewo_rozpinaj%C4%85ce
 						</a>
