@@ -33,7 +33,10 @@ const Menu = () => {
 			<StyledUl>
 				{menuItems.map((item) => (
 					<StyledLi key={item.path}>
-						<StyledLink to={item.path} active={item.path === location.pathname}>
+						<StyledLink
+							to={item.path}
+							active={item.path === location.pathname ? 1 : 0}
+						>
 							{item.label}
 						</StyledLink>
 					</StyledLi>

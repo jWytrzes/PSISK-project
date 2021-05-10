@@ -35,7 +35,7 @@ const LinksGrid = () => {
 	return (
 		<StyledGrid container spacing={3}>
 			{cards.map((card) => (
-				<Grid xs={12} sm={6}>
+				<Grid xs={12} sm={6} item={true} key={card.title}>
 					<StyledCard>
 						<Link to={card.link}>
 							<CardContent>
