@@ -206,7 +206,7 @@ const STP = () => {
 			<br />
 			<br />
 			<Typography component="h3" variant="h6">
-				Prykład
+				Przykład
 			</Typography>
 			<br />
 			<Box mb="10px">
