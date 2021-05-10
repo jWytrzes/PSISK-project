@@ -1,4 +1,10 @@
-import { Container, Divider, IconButton, Toolbar } from '@material-ui/core';
+import {
+	Container,
+	Divider,
+	Hidden,
+	IconButton,
+	Toolbar,
+} from '@material-ui/core';
 import { Menu as MenuIcon, ChevronLeft } from '@material-ui/icons';
 import { useState } from 'react';
 import Menu from '../../components/molecules/Menu/Menu';
@@ -12,7 +18,24 @@ import {
 } from './MainTemplate-styles';
 
 const MainTemplate = ({ title, children }) => {
-	const [isDrawerOpen, setIsDraweOpen] = useState(true);
+	const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+
+	const drawer = (
+		<>
+			<StyledButtonWrapper>
+				<IconButton onClick={() => setIsDrawerOpen(false)}>
+					<ChevronLeft />
+				</IconButton>
+			</StyledButtonWrapper>
+			<Divider />
+			<StyledDrawerContent>
+				<Menu />
+			</StyledDrawerContent>
+		</>
+	);
+
+	const container =
+		window !== undefined ? () => window.document.body : undefined;
 
 	return (
 		<div>
@@ -22,7 +45,7 @@ const MainTemplate = ({ title, children }) => {
 						edge="start"
 						color="inherit"
 						aria-label="open drawer"
-						onClick={() => setIsDraweOpen(!isDrawerOpen)}
+						onClick={() => setIsDrawerOpen(!isDrawerOpen)}
 					>
 						<MenuIcon />
 					</IconButton>
@@ -31,22 +54,31 @@ const MainTemplate = ({ title, children }) => {
 					</StyledTypography>
 				</Toolbar>
 			</StyledAppBar>
-
-			<StyledDrawer
-				variant="persistent"
-				open={isDrawerOpen}
-				onClose={() => setIsDraweOpen(false)}
-			>
-				<StyledButtonWrapper>
-					<IconButton onClick={() => setIsDraweOpen(false)}>
-						<ChevronLeft />
-					</IconButton>
-				</StyledButtonWrapper>
-				<Divider />
-				<StyledDrawerContent>
-					<Menu />
-				</StyledDrawerContent>
-			</StyledDrawer>
+			<div>
+				<Hidden mdUp={1} implementation="js">
+					<StyledDrawer
+						container={container}
+						variant="temporary"
+						anchor={'left'}
+						open={isDrawerOpen}
+						onClose={() => setIsDrawerOpen(false)}
+						ModalProps={{
+							keepMounted: true,
+						}}
+					>
+						{drawer}
+					</StyledDrawer>
+				</Hidden>
+				<Hidden smDown={1} implementation="css">
+					<StyledDrawer
+						variant="persistent"
+						open={isDrawerOpen}
+						onClose={() => setIsDrawerOpen(false)}
+					>
+						{drawer}
+					</StyledDrawer>
+				</Hidden>
+			</div>
 			<StyledMain open={isDrawerOpen}>
 				<Container maxWidth="md">{children}</Container>
 			</StyledMain>
