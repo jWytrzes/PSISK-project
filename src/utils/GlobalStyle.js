@@ -16,6 +16,14 @@ const GlobalStyle = createGlobalStyle`
 		margin: 0;
 		overflow-x: hidden;
 	}
+
+	figure {
+		text-align: center;
+
+		figcaption {
+			margin-top: 5px;
+		}
+	}
 `;
 
 export default GlobalStyle;

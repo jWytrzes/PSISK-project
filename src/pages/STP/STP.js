@@ -1,5 +1,14 @@
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import MainTemplate from '../../templates/MainTemplate/MainTemplate';
+import bpdu from '../../utils/images/bpdu.jpg';
+import stp1 from '../../utils/images/stp1.jpeg';
+import stp2 from '../../utils/images/stp2.jpeg';
+import stp3 from '../../utils/images/stp3.jpeg';
+import stp4 from '../../utils/images/stp4.jpeg';
+import stp5 from '../../utils/images/stp5.jpeg';
+import stp6 from '../../utils/images/stp6.jpeg';
+import stp7 from '../../utils/images/stp7.jpeg';
+import stp8 from '../../utils/images/stp8.jpeg';
 
 const STP = () => {
 	return (
@@ -7,6 +16,363 @@ const STP = () => {
 			<Typography component="h2" variant="h3">
 				Spanning Tree Protocol (STP)
 			</Typography>
+			<br />
+			<br />
+			<Typography component="h3" variant="h6">
+				Motywacja używania STP
+			</Typography>
+			<br />
+			<Box mb="10px">
+				<Typography variant="body1">
+					We współczesnych sieciach komputerowych niezbędna jest nadmiarowość
+					(redundancja). Kilka połączeń kablowych pomiędzy przełącznikami
+					pozwala na zwiększenie niezawodności sieci - w przypadku awarii jednej
+					ze ścieżek, zasoby nadal są dostępne dzięki istneniu alternatywnej
+					trasy.
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Niestety nadmiarowość powoduje inne problemy. Stworzenie cykli w
+					topologii może skutkować:
+					<ul>
+						<li>powstaniem burzy rozgłoszeniowej</li>
+						<li>niestabilnością bazy adresów MAC</li>
+						<li>wielokrotną transmisją ramki</li>
+					</ul>
+				</Typography>
+			</Box>
+			<br />
+			<Typography component="h3" variant="h6">
+				Burza rozgłoszeniowa
+			</Typography>
+			<br />
+			<Box mb="10px">
+				<Typography variant="body1">
+					Jest to anomalia w sieci, w której przesyłanie normalnego ruchu może
+					zostać uniemożliwione, przez nagormadzenie ruchu broadcastowego,
+					wysyłanego przez przełączniki bez końca. Gdy w pętli na poziomie
+					warstwy drugiej sieci krąży zbyt wiele ramek, media transmisyjne i
+					urządzenia sieciowe są tak obciążone, a to powoduje awarię sieci.
+				</Typography>
+			</Box>
+			<br />
+			<br />
+			<Typography component="h3" variant="h6">
+				Niestabilność bazy adresów MAC
+			</Typography>
+			<br />
+			<Box mb="10px">
+				<Typography variant="body1">
+					Jest to sytuacja, w której przesyłanie normalnego ruchu w sieci może
+					zostać zakłócone, przez brak zasobów przełącznika, który jest
+					spowodowany próbami ustabilizowania tablicy adresów MAC. Niestabilność
+					wynika z odbierania kopii tej samej ramki na różnych portach
+					przełącznika (ramki ARP nie posiadają atrybutu TTL - time to live).
+				</Typography>
+			</Box>
+			<br />
+			<br />
+			<Typography component="h3" variant="h6">
+				Wielokrotna transmisja ramki
+			</Typography>
+			<br />
+			<Box mb="10px">
+				<Typography variant="body1">
+					To sytuacja, w której urządzenie docelowe może odbierać wiele kopii
+					tej samej ramki, co może powodować błędy, ponieważ wiele protokołów
+					nie jest w stanie obsłużyć odbierania wielu kopii jednej transmisji.
+				</Typography>
+			</Box>
+			<br />
+			<br />
+			<Typography component="h3" variant="h6">
+				Spanning Tree Protocol
+			</Typography>
+			<br />
+			<Box mb="10px">
+				<Typography variant="body1">
+					Wyżej opisane problemy można rozwiązać poprzez wykrycie pętli w
+					topologii i zablokowanie odpowiednich interfejsów tak, aby
+					wyeliminować alternatywne trasy. Tym zajmują się protokoły STP.
+					Poniżej opisano oryginalną specyfikację protokołu - 802.1D.
+				</Typography>
+			</Box>
+			<br />
+			<br />
+			<Typography component="h3" variant="h6">
+				Algorytm spanning tree
+			</Typography>
+			<br />
+			<Box mb="10px">
+				<Typography variant="body1">
+					Aby wyznaczyć w sieci trasę bez pętli, algorytm musi najpierw
+					wyznaczyć most główny (root bridge), czyli urządzenie, które zostanie
+					korzeniem drzewa rozpinającego, względem którego będą wykonywane
+					następne obliczenia.
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Podstawowym elementem działania algorytmu STP są ramki BPDU (Bridge
+					Protocol Data Unit).
+				</Typography>
+			</Box>
+			<figure>
+				<img src={bpdu} alt="Pola zawarte w ramce BPDU" />
+				<figcaption>
+					Pola zawarte w ramce BPDU (
+					<a
+						target="_blank"
+						href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+					>
+						źródło
+					</a>
+					)
+				</figcaption>
+			</figure>
+			<Box mb="10px">
+				<Typography variant="body1">
+					O wyznaczeniu mostu głównego decydują dwie wartości: adres MAC oraz
+					priorytet danego przełącznika. Zestawienie tych wartości jest zawarte
+					w prace BPDU w polu Bridge ID.
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Tak więc w pierwszym etapie przełączniki wysyłają między sobą ramki
+					BPDU. Przełącznik z najniższym Bridge ID zostaje mostem głównym. Jeśli
+					priorytet przełączników jest taki sam, niższy Bridge ID to ten z
+					najniższym numerycznie adresem MAC.
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Kolejnym krokiem jest określenie typów i stanów portów przełączników.
+					Port może być typu:
+					<ul>
+						<li>
+							desygnowany (designated port) - port w stanie forwarding,
+							normalnie działający port, tego typu są wszystkiego porty mosu
+							głównego
+						</li>
+						<li>
+							główny (root port) - port bezpośrednio połączony z mostem głównym
+							(urządzenia innego niż root bridge)
+						</li>
+						<li>
+							alternatywny (alternative port) - połącenie alternatywne, w trybie
+							blokowania (przekazuje ramki BPDU, nie przekazuje ramek
+							komunikacyjnych, może zostać uruchomiony po wykryciu zmiany
+							topologii
+						</li>
+					</ul>
+					Każdy port może znajdować się w jednym z czterech stanów:
+					<ul>
+						<li>nasłuchiwanie (listening) – przesyła tylko ramki BPDU</li>
+						<li>
+							blokowanie (blocking) – port nie przekazuje ramek komunikacyjnych,
+							ale potrafi przekazywać ramki BPDU
+						</li>
+						<li>
+							uczenie (learning) – port uczy się adresów MAC podłączonych
+							urządzeń
+						</li>
+						<li>
+							przekazywanie (forwarding) – port przekazuje ramki komunikacyjne i
+							BPDU
+						</li>
+					</ul>
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Kolejny etap polega na wyznaczeniu najkrótszych ścieżek do mostu
+					głównego. Najkrótsza ścieżka to taka, którą najszybciej można dotrzeć
+					do root bridge'a. Koszt ścieżki jest obliczany na podstawie
+					przepustowości łącza: koszt łącza * ilość łączy. <br />W STP (802.1D)
+					poszczególne prędkości portów mają przyporządkowane następujące
+					koszty:
+					<ul>
+						<li>10 Mb/s – koszt 100</li>
+						<li> 100 Mb/s – koszt 19</li>
+						<li> 1 Gb/s – koszt 4</li>
+						<li> 10 Gb/s - koszt 2</li>
+					</ul>
+				</Typography>
+			</Box>
+			<br />
+			<br />
+			<Typography component="h3" variant="h6">
+				Prykład
+			</Typography>
+			<br />
+			<Box mb="10px">
+				<Typography variant="body1">
+					Bazowa topologia:
+					<figure>
+						<img
+							src={stp1}
+							alt="Topologia bazowa z przełącznikami połączonymi w trójkąt"
+						/>
+						<figcaption>
+							Topologia bazowa z przełącznikami połączonymi w trójkąt (
+							<a
+								target="_blank"
+								href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+							>
+								źródło
+							</a>
+							)
+						</figcaption>
+					</figure>
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Przesyłanie BPDU między przełącznikami w celu wybrania mostu głównego:
+					<figure>
+						<img src={stp2} alt="Przełączniki przesyłające między sobą BPDU" />
+						<figcaption>
+							Przełączniki przesyłające między sobą BPDU (
+							<a
+								target="_blank"
+								href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+							>
+								źródło
+							</a>
+							)
+						</figcaption>
+					</figure>
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Wybór mostu głównego:
+					<figure>
+						<img src={stp3} alt="Przełącznik A zostaje wybrany Root Bridgem" />
+						<figcaption>
+							Przełącznik A zostaje wybrany Root Bridgem (
+							<a
+								target="_blank"
+								href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+							>
+								źródło
+							</a>
+							)
+						</figcaption>
+					</figure>
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Ustalenie statusów portów mostu głównego:
+					<figure>
+						<img
+							src={stp4}
+							alt="Porty na Root Bridge’u uzyskują status Designated Portów"
+						/>
+						<figcaption>
+							Porty na Root Bridge’u uzyskują status Designated Portów (
+							<a
+								target="_blank"
+								href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+							>
+								źródło
+							</a>
+							)
+						</figcaption>
+					</figure>
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Ustalenie statusów portów głównych:
+					<figure>
+						<img
+							src={stp5}
+							alt="Porty w kierunku Root Bridge’a uzyskują status Root Portów"
+						/>
+						<figcaption>
+							Porty w kierunku Root Bridge’a uzyskują status Root Portów (
+							<a
+								target="_blank"
+								href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+							>
+								źródło
+							</a>
+							)
+						</figcaption>
+					</figure>
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Ustalenie portów głównych na przełącznikach:
+					<figure>
+						<img
+							src={stp6}
+							alt="Biorąc pod uwagę prędkości poszczególnych interfejsów przełącznik B ma najniższy koszt do Root Bridge'a na porcie Gi 0/3, który przez to staje się Root Portem"
+						/>
+						<figcaption>
+							Biorąc pod uwagę prędkości poszczególnych interfejsów przełącznik
+							B ma najniższy koszt do Root Bridge’a na porcie Gi 0/3, który
+							przez to staje się Root Portem (
+							<a
+								target="_blank"
+								href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+							>
+								źródło
+							</a>
+							)
+						</figcaption>
+					</figure>
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Porównanie Bridge ID pozostałych portów:
+					<figure>
+						<img
+							src={stp7}
+							alt="Port Gi 0/4 na przełączniku B uzyskuje status Designated z uwagi na niższy Bridge ID przełącznika B względem przełącznika C"
+						/>
+						<figcaption>
+							Port Gi 0/4 na przełączniku B uzyskuje status Designated z uwagi
+							na niższy Bridge ID przełącznika B względem przełącznika C (
+							<a
+								target="_blank"
+								href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+							>
+								źródło
+							</a>
+							)
+						</figcaption>
+					</figure>
+				</Typography>
+			</Box>
+			<Box mb="10px">
+				<Typography variant="body1">
+					Zablokowanie portu alternatywnego, wyeliminowanie pętli:
+					<figure>
+						<img
+							src={stp8}
+							alt="Port Gi 0/5 na przełączniku C uzyskuje status Non-Designated i zostaje zablokowany w celu wyeliminowania pętli w sieci"
+						/>
+						<figcaption>
+							Port Gi 0/5 na przełączniku C uzyskuje status Non-Designated i
+							zostaje zablokowany w celu wyeliminowania pętli w sieci (
+							<a
+								target="_blank"
+								href="https://www.nastykusieci.pl/stp-wprowadzenie/"
+							>
+								źródło
+							</a>
+							)
+						</figcaption>
+					</figure>
+				</Typography>
+			</Box>
 		</MainTemplate>
 	);
 };

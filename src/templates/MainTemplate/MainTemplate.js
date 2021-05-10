@@ -39,7 +39,7 @@ const MainTemplate = ({ title, children }) => {
 
 	return (
 		<div>
-			<StyledAppBar open={isDrawerOpen} position="absolute">
+			<StyledAppBar open={isDrawerOpen} position="fixed">
 				<Toolbar>
 					<IconButton
 						edge="start"
