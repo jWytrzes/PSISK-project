@@ -1,4 +1,5 @@
 import { Typography } from '@material-ui/core';
+import LinksGrid from '../../components/molecules/LinksGrid/LinksGrid';
 import MainTemplate from '../../templates/MainTemplate/MainTemplate';
 
 const Home = () => {
@@ -8,20 +9,7 @@ const Home = () => {
 				STP | Materiały edukcyjne
 			</Typography>
 			<br />
-			<Typography variant="body1">
-				Laborum Lorem elit laboris cillum adipisicing id aliquip. Quis non
-				dolore dolor anim eiusmod nostrud irure ullamco laboris nulla nisi
-				pariatur sunt qui. Non id laborum laboris esse pariatur ad id laboris
-				incididunt. Anim qui elit eu deserunt non officia nostrud nulla.
-				incididunt. Sunt occaecat dolore consectetur cillum sit non.
-			</Typography>
-			<Typography variant="body1">
-				Laborum Lorem elit laboris cillum adipisicing id aliquip. Quis non
-				dolore dolor anim eiusmod nostrud irure ullamco laboris nulla nisi
-				pariatur sunt qui. Non id laborum laboris esse pariatur ad id laboris
-				incididunt. Anim qui elit eu deserunt non officia nostrud nulla.
-				incididunt. Sunt occaecat dolore consectetur cillum sit non.
-			</Typography>
+			<LinksGrid />
 		</MainTemplate>
 	);
 };

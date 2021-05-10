@@ -39,7 +39,7 @@ const MainTemplate = ({ title, children }) => {
 
 	return (
 		<div>
-			<StyledAppBar open={isDrawerOpen} position="absolute">
+			<StyledAppBar open={isDrawerOpen} position="fixed">
 				<Toolbar>
 					<IconButton
 						edge="start"
@@ -55,7 +55,7 @@ const MainTemplate = ({ title, children }) => {
 				</Toolbar>
 			</StyledAppBar>
 			<div>
-				<Hidden mdUp={1} implementation="js">
+				<Hidden mdUp={true} implementation="js">
 					<StyledDrawer
 						container={container}
 						variant="temporary"
@@ -69,7 +69,7 @@ const MainTemplate = ({ title, children }) => {
 						{drawer}
 					</StyledDrawer>
 				</Hidden>
-				<Hidden smDown={1} implementation="css">
+				<Hidden smDown={true} implementation="css">
 					<StyledDrawer
 						variant="persistent"
 						open={isDrawerOpen}

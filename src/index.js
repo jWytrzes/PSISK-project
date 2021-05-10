@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useTheme } from '@material-ui/core';
-import { StylesProvider } from '@material-ui/core/styles';
+import { createMuiTheme, StylesProvider } from '@material-ui/core/styles';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Home from './pages/Home/Home';
@@ -14,8 +13,8 @@ import RSTP from './pages/RSTP/RSTP';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<ThemeProvider theme={useTheme}>
-			<StylesProvider injectFirst>
+		<StylesProvider injectFirst>
+			<ThemeProvider theme={createMuiTheme()}>
 				<GlobalStyle />
 				<BrowserRouter>
 					<Switch>
@@ -36,8 +35,8 @@ ReactDOM.render(
 						</Route>
 					</Switch>
 				</BrowserRouter>
-			</StylesProvider>
-		</ThemeProvider>
+			</ThemeProvider>
+		</StylesProvider>
 	</React.StrictMode>,
 	document.getElementById('root'),
 );

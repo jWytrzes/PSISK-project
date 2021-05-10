@@ -13,6 +13,8 @@ export const StyledAppBar = styled(AppBar)`
 `;
 
 export const StyledDrawer = styled(Drawer)`
+	background-color: #fff;
+
 	.MuiDrawer-paper {
 		width: ${drawerWidth}px;
 	}
@@ -22,7 +24,6 @@ export const StyledMain = styled.main`
 	flex-grow: 1;
 	padding: theme.spacing(3);
 	transition: ${({ theme }) => theme.transitions.create(['margin', 'width'])};
-
 	padding: 88px 0 24px;
 
 	@media (min-width: 992px) {
