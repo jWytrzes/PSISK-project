@@ -1,14 +1,14 @@
 import { Box, Typography } from '@material-ui/core';
 import MainTemplate from '../../templates/MainTemplate/MainTemplate';
 import bpdu from '../../utils/images/bpdu.jpg';
-import stp1 from '../../utils/images/stp1.jpeg';
-import stp2 from '../../utils/images/stp2.jpeg';
-import stp3 from '../../utils/images/stp3.jpeg';
-import stp4 from '../../utils/images/stp4.jpeg';
-import stp5 from '../../utils/images/stp5.jpeg';
-import stp6 from '../../utils/images/stp6.jpeg';
-import stp7 from '../../utils/images/stp7.jpeg';
-import stp8 from '../../utils/images/stp8.jpeg';
+import stp1 from '../../utils/images/stp1.jpg';
+import stp2 from '../../utils/images/stp2.jpg';
+import stp3 from '../../utils/images/stp3.jpg';
+import stp4 from '../../utils/images/stp4.jpg';
+import stp5 from '../../utils/images/stp5.jpg';
+import stp6 from '../../utils/images/stp6.jpg';
+import stp7 from '../../utils/images/stp7.jpg';
+import stp8 from '../../utils/images/stp8.jpg';
 
 const STP = () => {
 	return (
@@ -120,17 +120,7 @@ const STP = () => {
 			</Box>
 			<figure>
 				<img src={bpdu} alt="Pola zawarte w ramce BPDU" />
-				<figcaption>
-					Pola zawarte w ramce BPDU (
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href="https://www.nastykusieci.pl/stp-wprowadzenie/"
-					>
-						źródło
-					</a>
-					)
-				</figcaption>
+				<figcaption>Pola zawarte w ramce BPDU</figcaption>
 			</figure>
 			<Box mb="10px">
 				<Typography variant="body1">
@@ -217,15 +207,7 @@ const STP = () => {
 						alt="Topologia bazowa z przełącznikami połączonymi w trójkąt"
 					/>
 					<figcaption>
-						Topologia bazowa z przełącznikami połączonymi w trójkąt (
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href="https://www.nastykusieci.pl/stp-wprowadzenie/"
-						>
-							źródło
-						</a>
-						)
+						Topologia bazowa z przełącznikami połączonymi w trójkąt
 					</figcaption>
 				</figure>
 			</Box>
@@ -235,17 +217,7 @@ const STP = () => {
 				</Typography>
 				<figure>
 					<img src={stp2} alt="Przełączniki przesyłające między sobą BPDU" />
-					<figcaption>
-						Przełączniki przesyłające między sobą BPDU (
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href="https://www.nastykusieci.pl/stp-wprowadzenie/"
-						>
-							źródło
-						</a>
-						)
-					</figcaption>
+					<figcaption>Przełączniki przesyłające między sobą BPDU</figcaption>
 				</figure>
 			</Box>
 			<Box mb="10px">
@@ -275,15 +247,7 @@ const STP = () => {
 						alt="Porty na Root Bridge’u uzyskują status Designated Portów"
 					/>
 					<figcaption>
-						Porty na Root Bridge’u uzyskują status Designated Portów (
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href="https://www.nastykusieci.pl/stp-wprowadzenie/"
-						>
-							źródło
-						</a>
-						)
+						Porty na Root Bridge’u uzyskują status Designated Portów
 					</figcaption>
 				</figure>
 			</Box>
@@ -297,15 +261,7 @@ const STP = () => {
 						alt="Porty w kierunku Root Bridge’a uzyskują status Root Portów"
 					/>
 					<figcaption>
-						Porty w kierunku Root Bridge’a uzyskują status Root Portów (
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href="https://www.nastykusieci.pl/stp-wprowadzenie/"
-						>
-							źródło
-						</a>
-						)
+						Porty w kierunku Root Bridge’a uzyskują status Root Portów
 					</figcaption>
 				</figure>
 			</Box>
@@ -321,15 +277,7 @@ const STP = () => {
 					<figcaption>
 						Biorąc pod uwagę prędkości poszczególnych interfejsów przełącznik B
 						ma najniższy koszt do Root Bridge’a na porcie Gi 0/3, który przez to
-						staje się Root Portem (
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href="https://www.nastykusieci.pl/stp-wprowadzenie/"
-						>
-							źródło
-						</a>
-						)
+						staje się Root Portem
 					</figcaption>
 				</figure>
 			</Box>
@@ -344,15 +292,7 @@ const STP = () => {
 					/>
 					<figcaption>
 						Port Gi 0/4 na przełączniku B uzyskuje status Designated z uwagi na
-						niższy Bridge ID przełącznika B względem przełącznika C (
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href="https://www.nastykusieci.pl/stp-wprowadzenie/"
-						>
-							źródło
-						</a>
-						)
+						niższy Bridge ID przełącznika B względem przełącznika C
 					</figcaption>
 				</figure>
 			</Box>
@@ -367,15 +307,7 @@ const STP = () => {
 					/>
 					<figcaption>
 						Port Gi 0/5 na przełączniku C uzyskuje status Non-Designated i
-						zostaje zablokowany w celu wyeliminowania pętli w sieci (
-						<a
-							target="_blank"
-							rel="noreferrer"
-							href="https://www.nastykusieci.pl/stp-wprowadzenie/"
-						>
-							źródło
-						</a>
-						)
+						zostaje zablokowany w celu wyeliminowania pętli w sieci
 					</figcaption>
 				</figure>
 			</Box>
