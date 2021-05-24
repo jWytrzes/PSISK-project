@@ -8,12 +8,21 @@ const GlobalStyle = createGlobalStyle`
 	body {
 		font-size: 16px; 
 		font-family: Roboto, sans-serif;
+		background-color: #f7f7f7;
 	}
 
 	html, body {
 		padding: 0;
 		margin: 0;
 		overflow-x: hidden;
+	}
+
+	figure {
+		text-align: center;
+
+		figcaption {
+			margin-top: 5px;
+		}
 	}
 `;
 
