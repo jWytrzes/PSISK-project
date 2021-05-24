@@ -12,7 +12,7 @@ export const RSTPUtils = [
 		align: 'justify',
 		paragraph: true,
 		content:
-			'W tej części omówione zostaną ulepszenia dodane w ramach RSTP w porównaniu do poprzedniego standardu 802.1D. ',
+			'Ta część skupiona jest na omówiniu ulepszeń dodanych wraz z wprowadzeniem standardu RSTP w odniesieniu do standardu STP (802.1D)',
 	},
 	{
 		header: 'Wstęp',
@@ -20,7 +20,7 @@ export const RSTPUtils = [
 		align: 'justify',
 		paragraph: true,
 		content:
-			'Standard 802.1D Spanning Tree Protocol (STP) został zaprojektowany w czasie, gdy przywrócenie łączności po przerwie w dostawie prądu w ciągu około minuty uznawano za wystarczającą wydajność. Wraz z pojawieniem się przełączania warstwy 3 w środowiskach LAN, mostkowanie konkuruje teraz z rozwiązaniami routowanymi, w których protokoły, takie jak Open Shortest Path First (OSPF) i Enhanced Interior Gateway Routing Protocol (EIGRP), są w stanie zapewnić alternatywną ścieżkę w krótszym czasie. Firma Cisco ulepszyła oryginalną specyfikację 802.1D o funkcje, takie jak Uplink Fast , Backbone Fast i Port Fast, aby przyspieszyć czas konwergencji sieci z mostem. Wadą jest to, że te mechanizmy są zastrzeżone i wymagają dodatkowej konfiguracji. Protokół Rapid Spanning Tree (RSTP; IEEE 802.1w) może być postrzegany jako ewolucja standardu 802.1D, a nie rewolucja. Terminologia 802.1D pozostaje zasadniczo taka sama. Większość parametrów pozostała niezmieniona, więc użytkownicy zaznajomieni z 802.1D mogą szybko i wygodnie skonfigurować nowy protokół. W większości przypadków RSTP działa lepiej niż zastrzeżone rozszerzenia Cisco bez dodatkowej konfiguracji. W standardzie 802.1w można również powrócić do standardu 802.1D w celu współdziałania ze starszymi mostami w oparciu o port. Zmniejsza to korzyści, które wprowadza. Nowa edycja standardu 802.1D, IEEE 802.1D-2004, zawiera standardy IEEE 802.1t-2001 i IEEE 802.1w.',
+			'Jak wspomniano wyżej RSTP (IEEE 802.1w) jest rozszerzeniem sieciowego protokołu STP (IEEE 802.1D). Standard STP został stworzony w czasie, gdy przywrócenie działania sieci po okresie braku zasilania w ciegu jednej minuty było wystarczająco szybkie i wydajne. Z czasem potrzeby jednak wzrosły i w tym momencie z pomocą przyszedł nowo utworzony standard RSTP. W nowym standardzie mostkowanie konkuruje ze starymi rozwiązaniami routowanymi. Użyte w nim protkoły, takie jak Open Shortest Path First (OSPF) i Enhanced Interior Gateway Routing (EIGRP), są w stanie zapewnić alternatywną ścieżkę w znacznie krótszym czasie. Firma Cisco wprowadzając ulepszenia poprzedniej, oryginalnej specyfikacjie 802.1D wprowadziła funkcje przyspieszające czas konwergencji sieci z mostem. Są to między innymi: Uplink Fast, Backbone Fast i port Fast. Za wadę nowych mechanizmów można uznać to, że są one zastrzeżone i wymagają dodatkowej konfiguracji. Ze względu na małą liczbę zmian RSTP względem STP, nowy protokuł (RSTP, IEEE 802.1w) można uznać raczej za ewolucję poprzedniego, a nie rewolucję. Terminologia 802.1d pozostaje zasadniczo taka samo, a więszkość parametrów pozostała niezmieniona. Dzięki temu, nauka nowego standardu dla osób dobrze zaznajomionych z poprzednim jest łatwa i przyjemna, a skonfigurowanie nowego protokołu nie powinno stanowić dla nich problemu. W większości przypadków RSTP działa lepiej niż zastrzeżone rozszerzenia Cisco bez dodatkowej konfiguracji. W standardzie 802.1w można również powrócić do standardu 802.1D w celu współdziałania ze starszymi mostami w oparciu o port.',
 	},
 	{
 		header: 'Nowe stany i role portów',
