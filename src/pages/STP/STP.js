@@ -190,7 +190,11 @@ const STP = () => {
 					<li>10 Mb/s – koszt 100</li>
 					<li> 100 Mb/s – koszt 19</li>
 					<li> 1 Gb/s – koszt 4</li>
-					<li> 10 Gb/s - koszt 2</li>
+					<li> 10 Gb/s – koszt 2</li>
+					<li> 20 Gb/s – koszt 1</li>
+					<li> 100 Gb/s – koszt 1</li>
+					<li> 1 Tb/s – koszt 1</li>
+					<li> 10 Tb/s – koszt 1</li>
 				</ul>
 			</Box>
 			<br />
