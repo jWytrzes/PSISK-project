@@ -12,7 +12,7 @@ export const MSTPUtils = [
 		align: 'justify',
 		paragraph: true,
 		content:
-			'Multiple Spanning Tree (MST) to standard IEEE zainspirowany autorską implementacją protokołu MISTP (Multiple Instances Spanning Tree Protocol) firmy Cisco. Do zrozumienia wymagana jest znajomość Rapid STP (RSTP) (802.1w), ponieważ MSTP w dużym stopniu opiera się na tym innym standardzie IEEE.',
+			'Multiple Spanning Tree (MST) to standard IEEE zainspirowany autorską implementacją protokołu MISTP (Multiple Instances Spanning Tree Protocol) firmy Cisco. Do zrozumienia wymagana jest znajomość Rapid STP (RSTP) (802.1w), ponieważ MSTP w dużym stopniu opiera się na starszym standardzie STP, dlatego aby poprawnie zrozumieć jego działanie wymagana jest również znajomoś tej wersji (IEEE, 802.1w)',
 	},
 	{
 		header: 'Gdzie używać MSTP:',
@@ -22,18 +22,18 @@ export const MSTPUtils = [
 		content: (
 			<>
 				<p>
-					Ten diagram przedstawia wspólny projekt, który zawiera przełącznik
-					dostępu A z 1000 sieci VLAN nadmiarowo podłączonych do dwóch
-					przełączników dystrybucyjnych, D1 i D2. W tej konfiguracji użytkownicy
-					łączą się z przełącznikiem A, a administrator sieci zazwyczaj stara
-					się osiągnąć równoważenie obciążenia na łączach nadrzędnych
-					przełącznika dostępu w oparciu o parzyste lub nieparzyste sieci VLAN
-					lub dowolny inny schemat uznany za odpowiedni.
+					Na diagaramie przedstawiono projekt, który zawiera przełącznik dostępu
+					A z 1000 sieci VLAN nadmiarowo podłączonych do dwóch przełączników
+					dystrybucyjnych, D1 i D2. Taka konfiguracja umożliwia użytkownikom
+					łączenie się z przełącznikiem A, a administrator sieci stara się
+					osiągnąć równoważenie obciążenia na łączach nadrzędnych przełącznika
+					dostępu w oparciu o parzyste lub nieparzyste sieci VLAN lub dowolny
+					inny odpowiedni schemat. [1]
 				</p>
 				<img src={MSTP1} alt="MSTP1"></img>
 				<p>
-					W sekcjach poniżej przedstawiono przykładowe przypadki, w których w
-					tej konfiguracji używane są różne typy protokołu STP:
+					W sekcjach poniżej przedstawiono kilka przypadków, w których w tej
+					konfiguracji używane są różne typy protokołu STP:
 				</p>
 				<p>
 					<b>PVST+</b> - W środowisku Cisco Per-VLAN Spanning Tree (PVST +)
@@ -43,10 +43,10 @@ export const MSTPUtils = [
 					do 1000, a mostek D2 jako katalog główny dla sieci VLAN od 1 do 500. W
 					tej konfiguracji utrzymywana jest jedna instancja drzewa rozpinającego
 					dla każdej sieci VLAN, co oznacza 1000 instancji tylko dla dwóch
-					różnych ostatecznych topologii logicznych. To znacznie marnuje cykle
+					różnych ostatecznych topologii logicznych. To znacznie zużywa cykle
 					procesora dla wszystkich przełączników w sieci (oprócz przepustowości
 					używanej dla każdej instancji do wysyłania własnych jednostek danych
-					protokołu mostu (ang. Bridge Protocol Data Units - BPDU)).
+					protokołu mostu (ang. Bridge Protocol Data Units - BPDU)). [1]
 				</p>
 				<p>
 					<b>Standard 802.1q</b> - Oryginalny standard IEEE 802.1q definiuje
@@ -62,9 +62,9 @@ export const MSTPUtils = [
 					+, jak i 802.1q. Kilka sieci VLAN można odwzorować na mniejszej
 					liczbie wystąpień drzewa rozpinającego, ponieważ większość sieci nie
 					potrzebuje więcej niż kilku logicznych topologii. W topologii opisanej
-					na pierwszym diagramie istnieją tylko dwie różne końcowe topologies
+					na pierwszym diagramie istnieją tylko dwie różne końcowe topologie
 					logiczne, więc naprawdę potrzebne są tylko dwie instancje drzewa
-					opinającego. Nie ma potrzeby uruchamiania 1000 instancji.
+					opinającego. Nie ma potrzeby uruchamiania 1000 instancji. [1]
 				</p>
 				<img src={MSTP3} alt="MSTP3"></img>
 			</>
@@ -80,11 +80,11 @@ export const MSTPUtils = [
 				<p>
 					Jak wspomniano wcześniej, głównym ulepszeniem wprowadzonym przez MST
 					jest to, że kilka sieci VLAN można odwzorować na jedną instancję
-					drzewa opinającego. Rodzi to problem, w jaki sposób określić, która
+					drzewa rozpinającego. Rodzi to problem, w jaki sposób określić, która
 					sieć VLAN ma być skojarzona z którą instancją. Dokładniej, jak
 					oznaczyć jednostki BPDU, aby urządzenia odbierające mogły
 					zidentyfikować instancje i sieci VLAN, do których stosuje się każde
-					urządzenie.
+					urządzenie. [1]
 				</p>
 				<p>
 					Problem jest nieistotny w przypadku standardu 802.1q, w którym
@@ -103,13 +103,13 @@ export const MSTPUtils = [
 					rozwiązania tego problemu. Jeśli przez pomyłkę dwa przełączniki
 					zostały nieprawidłowo skonfigurowane i miały inny zakres sieci VLAN
 					skojarzonych z tą samą instancją, protokołowi trudno było poprawnie
-					odtworzyć tę sytuację.
+					odtworzyć tę sytuację. [1]
 				</p>
 				<p>
 					Komitet IEEE 802.1s przyjął znacznie łatwiejsze i prostsze podejście,
-					które wprowadziło regiony MST. Pomyśl o regionie jako o odpowiedniku
+					które wprowadziło regiony MST. Jest to coś takiego jak odpowiednik
 					Border Gateway Protocol (BGP) Autonomous Systems, czyli grupie
-					przełączników umieszczonych pod wspólną administracją.
+					przełączników umieszczonych pod wspólną administracją. [1]
 				</p>
 			</>
 		),
@@ -123,7 +123,7 @@ export const MSTPUtils = [
 			<>
 				<p>
 					Ponieważ region MST replikuje teraz jednostki BPDU IST w każdej sieci
-					VLAN na granicy, każda instancja PVST + słyszy jednostkę BPDU z
+					VLAN na granicy, każda instancja PVST+ słyszy jednostkę BPDU z
 					katalogu głównego IST (oznacza to, że katalog główny znajduje się
 					wewnątrz regionu MST). Zaleca się, aby katalog główny IST miał wyższy
 					priorytet niż jakikolwiek inny most w sieci, tak aby katalog główny
@@ -132,7 +132,7 @@ export const MSTPUtils = [
 				</p>
 				<img src={MSTPConf1} alt="MSTPConf1"></img>
 				<p>
-					Na tym diagramie przełącznik C to PVST + nadmiarowo podłączony do
+					Na tym diagramie przełącznik C to PVST+ nadmiarowo podłączony do
 					regionu MST. Katalog główny IST jest katalogiem głównym dla wszystkich
 					instancji PVST +, które istnieją na przełączniku C. W rezultacie
 					Switch C blokuje jedno ze swoich łączy nadrzędnych, aby zapobiec
@@ -149,7 +149,7 @@ export const MSTPUtils = [
 					</li>
 					<li>
 						UplinkFast może być używany na przełączniku C w celu uzyskania
-						szybkiej zbieżności w przypadku awarii łącza w górę.
+						szybkiej zbieżności w przypadku awarii łącza w górę. [1]
 					</li>
 				</ul>
 			</>
@@ -193,7 +193,7 @@ export const MSTPUtils = [
 						sposób, w jaki IST zachowuje się w regionie, aby cały region MST
 						przypominał most CST, nie został szczegółowo omówiony, można sobie
 						wyobrazić, że przełączenie w regionie nigdy nie jest tak wydajne,
-						jak przełączenie na jednym moście.
+						jak przełączenie na jednym moście. [1]
 					</li>
 				</ul>
 			</>
@@ -207,8 +207,8 @@ export const MSTPUtils = [
 		content: (
 			<>
 				<p>
-					Chociaż mechanizm emulacji PVST + zapewnia łatwą i bezproblemową
-					interoperacyjność między MST i PVST +, mechanizm ten oznacza, że
+					Chociaż mechanizm emulacji PVST+ zapewnia łatwą i bezproblemową
+					interoperacyjność między MST i PVST+, mechanizm ten oznacza, że
 					​​każda konfiguracja inna niż dwie wspomniane wcześniej jest
 					nieprawidłowa. Oto podstawowe zasady, których należy przestrzegać, aby
 					uzyskać udaną interakcję MST i PVST +:
@@ -219,24 +219,24 @@ export const MSTPUtils = [
 						elementem wszystkich sieci VLAN.
 					</li>
 					<li>
-						Jeśli most PVST + jest korzeniem, ten most musi być korzeniem dla
+						Jeśli most PVST+ jest root'em, ten most musi być root'em dla
 						wszystkich sieci VLAN (w tym CST, który zawsze działa w sieci VLAN
-						1, niezależnie od natywnej sieci VLAN, gdy CST uruchamia PVST +).
+						1, niezależnie od natywnej sieci VLAN, gdy CST uruchamia PVST+).
 					</li>
 					<li>
 						Symulacja kończy się niepowodzeniem i generuje komunikat o błędzie,
-						jeśli most MST jest katalogiem głównym CST, a mostek PVST + jest
+						jeśli most MST jest katalogiem głównym CST, a mostek PVST+ jest
 						katalogiem głównym jednej lub kilku innych sieci VLAN. Niepowodzenie
 						symulacji powoduje przełączenie portu granicznego w niespójny tryb
-						główny.
+						główny. [1]
 					</li>
 				</ol>
 				<img src={MSTPConf3} alt="MSTPConf3"></img>
 				<p>
 					Na tym diagramie most A w regionie MST jest katalogiem głównym dla
-					wszystkich trzech instancji PVST + z wyjątkiem jednej (czerwonej sieci
+					wszystkich trzech instancji PVST+ z wyjątkiem jednej (czerwonej sieci
 					VLAN). Most C jest głównym elementem czerwonej sieci VLAN. Załóżmy, że
-					pętla utworzona w czerwonej sieci VLAN, gdzie mostem C jest korzeniem,
+					pętla utworzona w czerwonej sieci VLAN, gdzie most C jest root'em,
 					zostaje zablokowana przez mostek B. Oznacza to, że mostek B jest
 					przeznaczony dla wszystkich sieci VLAN z wyjątkiem czerwonej. Region
 					MST nie jest w stanie tego zrobić. Port graniczny może blokować lub
@@ -245,8 +245,7 @@ export const MSTPUtils = [
 					gdy mostek B wykryje lepszą jednostkę BPDU na swoim porcie granicznym,
 					most wywołuje ochronę jednostki BPDU w celu zablokowania tego portu.
 					Port jest umieszczony w niespójnym trybie root. Dokładnie ten sam
-					mechanizm sprawia, że ​​most A blokuje swój port graniczny. Łączność
-					została utracona; jednak,
+					mechanizm sprawia, że ​​most A blokuje swój port graniczny. [1]
 				</p>
 			</>
 		),
@@ -258,7 +257,9 @@ export const MSTPUtils = [
 		paragraph: true,
 		content: (
 			<a href="https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html">
-				Understanding Multiple Spanning Tree Protocol (802.1s) - Cisco
+				[1]
+				www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html
+				[dostęp: 10.05.2021]
 			</a>
 		),
 	},
