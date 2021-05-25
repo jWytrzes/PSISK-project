@@ -94,7 +94,7 @@ export const MSTPUtils = [
 				<ul>
 					<li>
 						Różne sieci VLAN przenoszą jednostki BPDU dla swoich odpowiednich
-						instancji (jedna jednostka BPDU na sieć VLAN). [1]
+						instancji (jedna jednostka BPDU na sieć VLAN).
 					</li>
 				</ul>
 				<p>
@@ -145,7 +145,7 @@ export const MSTPUtils = [
 						równoważenie obciążenia różnych sieci VLAN na portach łączy uplink
 						(ponieważ przełącznik C obsługuje jedno drzewo opinające na sieć
 						VLAN, przełącznik ten może wybrać, które bloki portów uplink są
-						określane na podstawie poszczególnych sieci VLAN). [1]
+						określane na podstawie poszczególnych sieci VLAN).
 					</li>
 					<li>
 						UplinkFast może być używany na przełączniku C w celu uzyskania
@@ -184,7 +184,7 @@ export const MSTPUtils = [
 						między dwoma łączami w górę regionu, które prowadzą do przełącznika
 						C. Łącze w górę na przełączniku B dla instancji będzie blokować
 						wszystkie sieci VLAN, podczas gdy przełącznik A będzie przekazywał
-						dane dla wszystkich sieci VLAN. [1]
+						dane dla wszystkich sieci VLAN.
 					</li>
 					<li>
 						Taka konfiguracja nadal umożliwia szybką konwergencję w regionie.
