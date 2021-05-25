@@ -28,7 +28,7 @@ export const MSTPUtils = [
 					łączenie się z przełącznikiem A, a administrator sieci stara się
 					osiągnąć równoważenie obciążenia na łączach nadrzędnych przełącznika
 					dostępu w oparciu o parzyste lub nieparzyste sieci VLAN lub dowolny
-					inny odpowiedni schemat.
+					inny odpowiedni schemat. [1]
 				</p>
 				<img src={MSTP1} alt="MSTP1"></img>
 				<p>
@@ -46,7 +46,7 @@ export const MSTPUtils = [
 					różnych ostatecznych topologii logicznych. To znacznie zużywa cykle
 					procesora dla wszystkich przełączników w sieci (oprócz przepustowości
 					używanej dla każdej instancji do wysyłania własnych jednostek danych
-					protokołu mostu (ang. Bridge Protocol Data Units - BPDU)).
+					protokołu mostu (ang. Bridge Protocol Data Units - BPDU)). [1]
 				</p>
 				<p>
 					<b>Standard 802.1q</b> - Oryginalny standard IEEE 802.1q definiuje
@@ -64,7 +64,7 @@ export const MSTPUtils = [
 					potrzebuje więcej niż kilku logicznych topologii. W topologii opisanej
 					na pierwszym diagramie istnieją tylko dwie różne końcowe topologie
 					logiczne, więc naprawdę potrzebne są tylko dwie instancje drzewa
-					opinającego. Nie ma potrzeby uruchamiania 1000 instancji.
+					opinającego. Nie ma potrzeby uruchamiania 1000 instancji. [1]
 				</p>
 				<img src={MSTP3} alt="MSTP3"></img>
 			</>
@@ -84,7 +84,7 @@ export const MSTPUtils = [
 					sieć VLAN ma być skojarzona z którą instancją. Dokładniej, jak
 					oznaczyć jednostki BPDU, aby urządzenia odbierające mogły
 					zidentyfikować instancje i sieci VLAN, do których stosuje się każde
-					urządzenie.
+					urządzenie. [1]
 				</p>
 				<p>
 					Problem jest nieistotny w przypadku standardu 802.1q, w którym
@@ -94,7 +94,7 @@ export const MSTPUtils = [
 				<ul>
 					<li>
 						Różne sieci VLAN przenoszą jednostki BPDU dla swoich odpowiednich
-						instancji (jedna jednostka BPDU na sieć VLAN).
+						instancji (jedna jednostka BPDU na sieć VLAN). [1]
 					</li>
 				</ul>
 				<p>
@@ -103,13 +103,13 @@ export const MSTPUtils = [
 					rozwiązania tego problemu. Jeśli przez pomyłkę dwa przełączniki
 					zostały nieprawidłowo skonfigurowane i miały inny zakres sieci VLAN
 					skojarzonych z tą samą instancją, protokołowi trudno było poprawnie
-					odtworzyć tę sytuację.
+					odtworzyć tę sytuację. [1]
 				</p>
 				<p>
 					Komitet IEEE 802.1s przyjął znacznie łatwiejsze i prostsze podejście,
 					które wprowadziło regiony MST. Jest to coś takiego jak odpowiednik
 					Border Gateway Protocol (BGP) Autonomous Systems, czyli grupie
-					przełączników umieszczonych pod wspólną administracją.
+					przełączników umieszczonych pod wspólną administracją. [1]
 				</p>
 			</>
 		),
@@ -145,11 +145,11 @@ export const MSTPUtils = [
 						równoważenie obciążenia różnych sieci VLAN na portach łączy uplink
 						(ponieważ przełącznik C obsługuje jedno drzewo opinające na sieć
 						VLAN, przełącznik ten może wybrać, które bloki portów uplink są
-						określane na podstawie poszczególnych sieci VLAN).
+						określane na podstawie poszczególnych sieci VLAN). [1]
 					</li>
 					<li>
 						UplinkFast może być używany na przełączniku C w celu uzyskania
-						szybkiej zbieżności w przypadku awarii łącza w górę.
+						szybkiej zbieżności w przypadku awarii łącza w górę. [1]
 					</li>
 				</ul>
 			</>
@@ -184,7 +184,7 @@ export const MSTPUtils = [
 						między dwoma łączami w górę regionu, które prowadzą do przełącznika
 						C. Łącze w górę na przełączniku B dla instancji będzie blokować
 						wszystkie sieci VLAN, podczas gdy przełącznik A będzie przekazywał
-						dane dla wszystkich sieci VLAN.
+						dane dla wszystkich sieci VLAN. [1]
 					</li>
 					<li>
 						Taka konfiguracja nadal umożliwia szybką konwergencję w regionie.
@@ -193,7 +193,7 @@ export const MSTPUtils = [
 						sposób, w jaki IST zachowuje się w regionie, aby cały region MST
 						przypominał most CST, nie został szczegółowo omówiony, można sobie
 						wyobrazić, że przełączenie w regionie nigdy nie jest tak wydajne,
-						jak przełączenie na jednym moście.
+						jak przełączenie na jednym moście. [1]
 					</li>
 				</ul>
 			</>
@@ -228,7 +228,7 @@ export const MSTPUtils = [
 						jeśli most MST jest katalogiem głównym CST, a mostek PVST+ jest
 						katalogiem głównym jednej lub kilku innych sieci VLAN. Niepowodzenie
 						symulacji powoduje przełączenie portu granicznego w niespójny tryb
-						główny.
+						główny. [1]
 					</li>
 				</ol>
 				<img src={MSTPConf3} alt="MSTPConf3"></img>
@@ -245,7 +245,7 @@ export const MSTPUtils = [
 					gdy mostek B wykryje lepszą jednostkę BPDU na swoim porcie granicznym,
 					most wywołuje ochronę jednostki BPDU w celu zablokowania tego portu.
 					Port jest umieszczony w niespójnym trybie root. Dokładnie ten sam
-					mechanizm sprawia, że ​​most A blokuje swój port graniczny.
+					mechanizm sprawia, że ​​most A blokuje swój port graniczny. [1]
 				</p>
 			</>
 		),
