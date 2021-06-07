@@ -13,7 +13,7 @@ export const StyledAppBar = styled(AppBar)`
 `;
 
 export const StyledDrawer = styled(Drawer)`
-	background-color: #fff;
+	/* background-color: #fff; */
 
 	.MuiDrawer-paper {
 		width: ${drawerWidth}px;
