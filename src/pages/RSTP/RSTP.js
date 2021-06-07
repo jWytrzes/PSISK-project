@@ -6,7 +6,7 @@ import './RSTP.css';
 const RSTP = () => {
 	return (
 		<MainTemplate title="Rapid Spanning Tree Protocol (RSTP)">
-			<Box mb="10px">
+			<Box mb="20px">
 				<Typography component="h2" variant="h3">
 					Rapid Spanning Tree Protocol (RSTP)
 				</Typography>

@@ -82,7 +82,10 @@ export const RSTPUtils = [
 					które są bardziej przydatne niż te, które wysyła każdy inny most. Most główny jest jedynym mostem w sieci,
 					który nie ma portu głównego. Wszystkie inne mosty odbierają jednostki BPDU na co najmniej jednym porcie. [1]
 				</p>
-				<img src={role1} alt="role1"></img>
+				<figure>
+					<img src={role1} alt="Porty główne"></img>
+					<figcaption>Porty główne</figcaption>
+				</figure>
 				<p>
 					<b>Role portów wyznaczonych</b> - Port jest wyznaczony (designated), jeśli ma możlwość by wysłać najlepszą
 					jednostkę BPDU w segmencie, do którego jest podłączony. Mosty 802.1D łączą ze sobą różne segmenty, takie jak
@@ -92,20 +95,33 @@ export const RSTPUtils = [
 					najlepszą jednostkę BPDU, jako most wyznaczony dla tego segmentu. Port na tym moście, który odpowiada, jest
 					portem wyznaczonym dla tego segmentu. [1]
 				</p>
-				<img src={role2} alt="role2"></img>
+
+				<figure>
+					<img src={role2} alt="Porty desygnowane"></img>
+					<figcaption>Porty desygnowane</figcaption>
+				</figure>
 				<p>
 					<b>Role portów alternatywnych i zapasowych</b> - Te dwie role odpowiadają stanowi blokowania (discarding)
 					802.1D. Zablokowany port jest definiowany jako port inny niż wyznaczony czy główny. Odbiera on bardziej
 					użyteczną jednostkę BPDU niż ta, którą wysyła w swoim segmencie. Port alternatywny odbiera bardziej przydatne
 					jednostki BPDU z innego mostu, jest portem zablokowanym:
 				</p>
-				<img src={role3} alt="role3"></img>
+
+				<figure>
+					<img src={role3} alt="Porty alternatywne"></img>
+					<figcaption>Porty alternatywne</figcaption>
+				</figure>
+
 				<p>
 					{' '}
 					Port zapasowy odbiera bardziej przydatne jednostki BPDU z tego samego mostu, na którym się znajduje, jest
 					portem zablokowanym:
 				</p>
-				<img src={role4} alt="role4"></img>
+
+				<figure>
+					<img src={role4} alt="Port zapasowy"></img>
+					<figcaption>Port zapasowy</figcaption>
+				</figure>
 				<p>
 					To rozróżnienie zostało już wprowadzone wewnętrznie w standardzie 802.1D. Tak właśnie działa Cisco UplinkFast.
 					Uzasadnieniem jest to, że port alternatywny zapewnia alternatywną ścieżkę do mostu głównego i dlatego może
@@ -127,7 +143,10 @@ export const RSTPUtils = [
 					RSTP wprowadził kilka zmian do formatu BPDU. Tylko dwie flagi, zmiana topologii (TC) i potwierdzenie TC (TCA),
 					są zdefiniowane w standardzie 802.1D. RSTP wykorzystuje teraz wszystkie sześć bitów bajtu flagi. [1]
 				</p>
-				<img src={BDPU1} alt="BDPU1"></img>
+
+				<figure>
+					<img src={BDPU1} alt="BDPU1"></img>
+				</figure>
 			</>
 		),
 	},
