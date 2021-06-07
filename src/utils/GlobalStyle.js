@@ -23,6 +23,7 @@ const GlobalStyle = createGlobalStyle`
 
 		figcaption {
 			margin-top: 5px;
+			font-style: italic;
 		}
 	}
 `;
