@@ -14,11 +14,7 @@ const MSTP = () => {
 					<Typography component="h3" variant="h6" align="justify">
 						{element.header}
 					</Typography>
-					<Typography
-						variant={element.variant}
-						align={element.align}
-						paragraph={element.paragraph}
-					>
+					<Typography variant={element.variant} align={element.align} paragraph={element.paragraph}>
 						{element.content}
 					</Typography>
 				</>

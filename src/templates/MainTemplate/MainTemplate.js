@@ -1,12 +1,6 @@
-import {
-	Container,
-	Divider,
-	Hidden,
-	IconButton,
-	Toolbar,
-} from '@material-ui/core';
+import { useState, useEffect } from 'react';
+import { Container, Divider, Hidden, IconButton, Toolbar } from '@material-ui/core';
 import { Menu as MenuIcon, ChevronLeft } from '@material-ui/icons';
-import { useState } from 'react';
 import Menu from '../../components/molecules/Menu/Menu';
 import {
 	StyledAppBar,
@@ -34,8 +28,13 @@ const MainTemplate = ({ title, children }) => {
 		</>
 	);
 
-	const container =
-		window !== undefined ? () => window.document.body : undefined;
+	const container = window !== undefined ? () => window.document.body : undefined;
+
+	useEffect(() => {
+		if (window.innerWidth < 992) {
+			setIsDrawerOpen(false);
+		}
+	}, []);
 
 	return (
 		<div>
