@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 16px; 
 		font-family: Roboto, sans-serif;
 		background-color: #f7f7f7;
+		line-height: 1.5;
 	}
 
 	html, body {
