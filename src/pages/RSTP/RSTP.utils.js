@@ -40,6 +40,47 @@ export const RSTPUtils = [
 		),
 	},
 	{
+		header: 'Rozszerzony ID Systemu:',
+		variant: 'body1',
+		align: 'justify',
+		paragraph: true,
+		content: (
+			<>
+				<p>
+					<b>Rozszerzony ID systemu (Extended System ID) </b> służy do określania różnych identyfikatorów mostu dla
+					różnych wystąpień routingu RSTP lub STP.
+				</p>
+				<p>
+					Pole priorytetu mostka ma długość 2 bajtów lub 16 bitów; 4-bity używane dla priorytetu mostu i 12-bity dla
+					rozszerzonego identyfikatora systemu, który identyfikuje sieć VLAN uczestniczącą w tym konkretnym procesie
+					STP.
+				</p>
+				<p>
+					Użycie tych 12 bitów dla rozszerzonego identyfikatora systemu zmniejsza priorytet mostu do 4 bitów. Ten proces
+					rezerwuje 12 bitów z prawej strony dla identyfikatora VLAN i 4 bity z lewej dla priorytetu mostu. To wyjaśnia,
+					dlaczego wartość priorytetu mostu można skonfigurować tylko jako wielokrotność 4096, czyli 2^12. Jeśli skrajne
+					lewe bity to 0001, to priorytet mostu wynosi 4096; jeśli skrajne lewe bity to 1111, to priorytet mostu wynosi
+					61440 (= 15 x 4096).
+				</p>
+				<p>
+					Wartość rozszerzonego identyfikatora systemu jest dodawana do wartości priorytetu mostu w identyfikatorze BID
+					w celu zidentyfikowania priorytetu i sieci VLAN ramki BPDU.
+				</p>
+				<p>
+					Gdy dwa przełączniki są skonfigurowane z tym samym priorytetem i mają ten sam rozszerzony identyfikator
+					systemu, przełącznik o adresie MAC o najniższej wartości szesnastkowej będzie miał niższy BID. Początkowo
+					wszystkie przełączniki są skonfigurowane z tą samą domyślną wartością priorytetu. Adres MAC jest wtedy
+					decydującym czynnikiem, na którym przełącznik stanie się mostem głównym.
+				</p>
+				<p>
+					Gdy wszystkie przełączniki są skonfigurowane z tym samym priorytetem, tak jak w przypadku wszystkich
+					przełączników utrzymywanych w domyślnej konfiguracji z priorytetem 32768, adres MAC staje się decydującym
+					czynnikiem, dla którego przełącznik staje się mostem głównym
+				</p>
+			</>
+		),
+	},
+	{
 		header: 'Nowe stany i role portów',
 		variant: 'body1',
 		align: 'justify',
