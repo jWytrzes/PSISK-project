@@ -69,11 +69,7 @@ const MainTemplate = ({ title, children }) => {
 					</StyledDrawer>
 				</Hidden>
 				<Hidden smDown={true} implementation="css">
-					<StyledDrawer
-						variant="persistent"
-						open={isDrawerOpen}
-						onClose={() => setIsDrawerOpen(false)}
-					>
+					<StyledDrawer variant="persistent" open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
 						{drawer}
 					</StyledDrawer>
 				</Hidden>

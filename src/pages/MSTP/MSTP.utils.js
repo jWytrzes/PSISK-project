@@ -23,20 +23,22 @@ export const MSTPUtils = [
 			<>
 				<p>
 					Na diagaramie przedstawiono projekt, który zawiera przełącznik dostępu A z 1000 sieci VLAN nadmiarowo
-					podłączonych do dwóch przełączników dystrybucyjnych, D1 i D2. Taka konfiguracja umożliwia użytkownikom
-					łączenie się z przełącznikiem A, a administrator sieci stara się osiągnąć równoważenie obciążenia na łączach
-					nadrzędnych przełącznika dostępu w oparciu o parzyste lub nieparzyste sieci VLAN lub dowolny inny odpowiedni
-					schemat. [1]
+					podłączonych do dwóch przełączników dystrybucyjnych, D1 i D2. W tej konfiguracji użytkownicy łączą się z
+					przełącznikiem A, a administrator sieci stara się osiągnąć równoważenie obciążenia na łączach nadrzędnych
+					przełącznika dostępu w oparciu o parzyste lub nieparzyste sieci VLAN lub dowolny inny odpowiedni schemat. [1]
 				</p>
-				<img src={MSTP1} alt="MSTP1"></img>
+				<figure>
+					<img src={MSTP1} alt="MSTP1"></img>
+					<figcaption>Przykłądowa Konfiguracja</figcaption>
+				</figure>
 				<p>
 					W sekcjach poniżej przedstawiono kilka przypadków, w których w tej konfiguracji używane są różne typy
 					protokołu STP:
 				</p>
 				<p>
 					<b>PVST+</b> - W środowisku Cisco Per-VLAN Spanning Tree (PVST +) parametry drzewa rozpinającego są ustawiane
-					w taki sposób, że połowa sieci VLAN jest przekazywana na każdym łączu nadrzędnym. Aby to łatwo osiągnąć,
-					wybierz mostek D1 jako katalog główny dla sieci VLAN od 501 do 1000, a mostek D2 jako katalog główny dla sieci
+					w taki sposób, że połowa sieci VLAN jest przekazywana na każdym łączu nadrzędnym. Aby to łatwo osiągnąć należy
+					wybrać mostek D1 jako katalog główny dla sieci VLAN od 501 do 1000, a mostek D2 jako katalog główny dla sieci
 					VLAN od 1 do 500. W tej konfiguracji utrzymywana jest jedna instancja drzewa rozpinającego dla każdej sieci
 					VLAN, co oznacza 1000 instancji tylko dla dwóch różnych ostatecznych topologii logicznych. To znacznie zużywa
 					cykle procesora dla wszystkich przełączników w sieci (oprócz przepustowości używanej dla każdej instancji do
@@ -48,15 +50,21 @@ export const MSTPUtils = [
 					dla całej sieci z mostem, niezależnie od liczby sieci VLAN. Jeśli CST zostanie zastosowany do topologii tego
 					diagramu, wynik będzie podobny do diagramu pokazanego poniżej:
 				</p>
-				<img src={MSTP2} alt="MSTP2"></img>
+				<figure>
+					<img src={MSTP2} alt="MSTP2"></img>
+					<figcaption>Konfiguracja zmniejszająca zużycie mocy obliczeniowej</figcaption>
+				</figure>
 				<p>
 					<b>MST</b> - MST (IEEE 802.1s) łączy najlepsze aspekty zarówno z PVST +, jak i 802.1q. Kilka sieci VLAN można
 					odwzorować na mniejszej liczbie wystąpień drzewa rozpinającego, ponieważ większość sieci nie potrzebuje więcej
 					niż kilku logicznych topologii. W topologii opisanej na pierwszym diagramie istnieją tylko dwie różne końcowe
-					topologie logiczne, więc naprawdę potrzebne są tylko dwie instancje drzewa opinającego. Nie ma potrzeby
+					topologie logiczne, więc naprawdę potrzebne są tylko dwie instancje drzewa rozpinającego. Nie ma potrzeby
 					uruchamiania 1000 instancji. [1]
 				</p>
-				<img src={MSTP3} alt="MSTP3"></img>
+				<figure>
+					<img src={MSTP3} alt="MSTP3"></img>
+					<figcaption>Minimalizacja instancji drzewa rozpinającego</figcaption>
+				</figure>
 			</>
 		),
 	},
@@ -111,7 +119,10 @@ export const MSTPUtils = [
 					katalog główny IST stał się katalogiem głównym dla wszystkich różnych instancji PVST +, jak pokazano na
 					poniższym diagramie:
 				</p>
-				<img src={MSTPConf1} alt="MSTPConf1"></img>
+				<figure>
+					<img src={MSTPConf1} alt="MSTPConf1"></img>
+					<figcaption>Schemat konfiguracji zalecanej</figcaption>
+				</figure>
 				<p>
 					Na tym diagramie przełącznik C to PVST+ nadmiarowo podłączony do regionu MST. Katalog główny IST jest
 					katalogiem głównym dla wszystkich instancji PVST +, które istnieją na przełączniku C. W rezultacie Switch C
@@ -144,7 +155,10 @@ export const MSTPUtils = [
 					Oznacza to, że wszystkie instancje PVST + mają lepszy katalog główny niż instancja IST, jak pokazano na
 					poniższym diagramie:
 				</p>
-				<img src={MSTPConf2} alt="MSTPConf2"></img>
+				<figure>
+					<img src={MSTPConf2} alt="MSTPConf2"></img>
+					<figcaption>Schemat konfiguracji alternatywnej</figcaption>
+				</figure>
 				<p>
 					Ten przypadek odpowiada rdzeniu PVST + i warstwie dostępu lub dystrybucji MST, co jest raczej rzadkim
 					scenariuszem. W przypadku ustanowienia mostu głównego poza regionem występują następujące wady w porównaniu z
@@ -193,7 +207,10 @@ export const MSTPUtils = [
 						powoduje przełączenie portu granicznego w niespójny tryb główny. [1]
 					</li>
 				</ol>
-				<img src={MSTPConf3} alt="MSTPConf3"></img>
+				<figure>
+					<img src={MSTPConf3} alt="MSTPConf3"></img>
+					<figcaption>Schemat konfiguracji błędnej</figcaption>
+				</figure>
 				<p>
 					Na tym diagramie most A w regionie MST jest katalogiem głównym dla wszystkich trzech instancji PVST+ z
 					wyjątkiem jednej (czerwonej sieci VLAN). Most C jest głównym elementem czerwonej sieci VLAN. Załóżmy, że pętla
@@ -214,8 +231,9 @@ export const MSTPUtils = [
 		align: 'justify',
 		paragraph: true,
 		content: (
-			<a href="https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html">
-				[1] www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html [dostęp: 10.05.2021]
+			<a href="https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24248-147.html">
+				[1] https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24248-147.html [dostęp:
+				10.05.2021]
 			</a>
 		),
 	},
